@@ -1,0 +1,44 @@
+<html>
+	<head>
+	    <style>
+            table,th,td {
+                border: 1px solid black;
+            }
+            
+            th,td {
+                padding: 5px;
+            }
+        </style>
+	</head>
+	<body>
+		<h1>Guestbook</h1>
+		<h2>Visitors so far:</h2>
+		<table>
+		    <tr>
+                <th>Name</th>
+                <th>Message</th>
+            </tr>
+		    {% for guest in guestlist %}
+		        <tr>
+		            <td>{{guest.name}}</td>
+		            <td>{{guest.message}}</td>
+		        </tr>
+		    {% endfor %}
+		</table>
+		
+		<h2>Make a new entry:</h2>
+		<form action="/" method="post">
+			<div>
+			    <label for="name">Name:</label>
+                <input type="text" id="name" name="user_name">
+			</div>
+			<div>
+			    <label for="message">Message:</label>
+                <input type="text" id="message" name="user_message">
+			</div>
+			<div class="button">
+              <button type="submit">Send your message</button>
+            </div>
+		</form>
+	</body>
+</html>
