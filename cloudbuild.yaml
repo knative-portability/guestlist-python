@@ -1,0 +1,12 @@
+steps:
+  # build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/mcarolyn-intern-project-2019/guestbook', '.']
+  # push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/mcarolyn-intern-project-2019/guestbook']
+  # Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 'run', 'deploy', 'guestbook', '--image', 'gcr.io/mcarolyn-intern-project-2019/guestbook', '--region', 'us-central1','--platform', 'managed']
+images:
+- gcr.io/mcarolyn-intern-project-2019/guestbook
